@@ -6,10 +6,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
+    <title>myTwitter</title>
 </head>
 
 <body>
+
+    {%block title%}{%endblock%}
+    <nav class="navbar navbar-light bg-primary justify-content-between ">
+        <div class="container">
+            {%if session["user_id"]%}
+            <a href="/secret" class="navbar-brand text-light">Welcome to myTwitter</a>
+            {%else%}
+            <a href="/" class="navbar-brand text-light">Welcome to myTwitter</a>
+            {%endif%}
+            <ul class="nav navbar-nav flex-row float-right">
+                {% if session['user_id'] %}
+                <li class="nav-item">
+                    <a class="nav-link pr-3 text-light" href="/logout">Logout</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link pr-3 text-light" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light" href="/register">Sign up</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    {%block content%}
+    {%endblock%}
+
 
 </body>
 
